@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Testing HTMZ</title>
+	<style>
+		body {
+			margin-top: 50svh;
+			display: flex;
+			justify-content: space-around;
+			gap: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<iframe hidden name=htmz
+		onload="setTimeout(()=>document.querySelector(contentWindow.location.hash||null)?.replaceWith(...contentDocument.body.childNodes))">
+	</iframe>
+
+	<div class="container" id="form">
+		<form action="/greeting#result" method="post" target=htmz>
+			<label>
+				Siapa Namamu?
+				<input name="name">
+			</label>
+			<button>Sapa Aku</button>
+		</form>
+		<div id="result"></div>
+	</div>
+	<div class="container" id="incrementer">
+		<p id="counter">0</p>
+		<form method="post" target=htmz>
+			<button type="submit" formaction="/inc#counter">+</button>
+			<button type="submit" formaction="/dec#counter">-</button>
+		</form>
+	</div>
+
+</body>
+
+</html>
